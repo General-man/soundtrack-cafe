@@ -1,210 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soundtrack Cafe | Full Menu</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #f4eee8;
-            --accent-red: #8b261e;
-            --text-dark: #222;
-            --vinyl-black: #1a1a1a;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-dark);
-            margin: 0;
-            scroll-behavior: smooth;
-            line-height: 1.6;
-        }
-
-        /* --- Header --- */
-        header {
-            text-align: center;
-            padding: 60px 20px;
-            background: #fff;
-            border-bottom: 10px solid var(--accent-red);
-        }
-
-        .record {
-            width: 120px;
-            height: 120px;
-            background: radial-gradient(circle, var(--accent-red) 18%, #333 19%, #1a1a1a 22%, #333 23%, #1a1a1a 100%);
-            border-radius: 50%;
-            margin: 0 auto;
-            animation: spin 5s linear infinite;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-        h1 { letter-spacing: 10px; text-transform: uppercase; margin: 20px 0 5px; font-weight: 700; }
-        .sub-header { color: #777; font-size: 0.9rem; letter-spacing: 2px; }
-
-        /* --- Navigation --- */
-        nav {
-            position: sticky;
-            top: 0;
-            background: rgba(255,255,255,0.98);
-            padding: 15px 0;
-            text-align: center;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        nav a {
-            margin: 0 12px;
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 700;
-            font-size: 0.8rem;
-            transition: 0.3s;
-            text-transform: uppercase;
-        }
-
-        nav a:hover { color: var(--accent-red); }
-
-        /* --- Menu Sections --- */
-        .container { max-width: 1100px; margin: auto; padding: 40px 20px; }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            margin: 50px 0 30px;
-            border-left: 5px solid var(--accent-red);
-            padding-left: 15px;
-        }
-
-        .section-header h2 { margin: 0; letter-spacing: 3px; font-size: 1.8rem; }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-        }
-
-        .menu-item {
-            background: white;
-            padding: 25px;
-            border-radius: 4px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border-bottom: 1px solid #eee;
-        }
-
-        .menu-item:hover {
-            transform: scale(1.03);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-            border-color: var(--accent-red);
-        }
-
-        .item-top { display: flex; justify-content: space-between; align-items: baseline; }
-        .item-name { font-weight: 700; font-size: 1.1rem; color: #111; }
-        .price { color: var(--accent-red); font-weight: 700; }
-
-        .desc { font-size: 0.85rem; color: #666; margin-top: 10px; font-style: italic; }
-
-        .label {
-            display: inline-block;
-            margin-top: 12px;
-            font-size: 0.7rem;
-            padding: 3px 8px;
-            border-radius: 3px;
-            background: #f0f0f0;
-            font-weight: bold;
-        }
-
-        .spicy { color: #e74c3c; border: 1px solid #e74c3c; background: #fff5f5; }
-        .chef { color: #d4af37; border: 1px solid #d4af37; background: #fffdf0; }
-
-        footer { text-align: center; padding: 60px; background: #1a1a1a; color: #fff; margin-top: 50px; }
-    </style>
+  <meta charset="UTF-8">
+  <title>Soundtrack Cafe | Menu</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-
-<header>
-    <div class="record"></div>
-    <h1>SOUNDTRACK CAFE</h1>
-    <p class="sub-header">OPEN EVERYDAY | 08:00 AM - 11:30 PM</p>
+<header class="hero">
+  <div class="overlay"></div>
+  <nav class="nav">
+    <div class="logo">Soundtrack Cafe</div>
+    <div class="menu-icon" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#hotpot">Hot Pot Ramen</a></li>
+      <li><a href="#salads">Salad Bowls</a></li>
+      <li><a href="#rice">Rice Bowls</a></li>
+      <li><a href="#mojito">Mojitos</a></li>
+      <li><a href="#tea">Black Tea</a></li>
+      <li><a href="#franky">All Day Franky</a></li>
+      <li><a href="#pasta">Wine Pastas</a></li>
+    </ul>
+  </nav>
+  <div class="hero-text">
+    <h1>Soundtrack Cafe</h1>
+    <p>Good music. Great food. All day vibes.</p>
+    <a href="#hotpot" class="btn">Explore Menu</a>
+  </div>
 </header>
 
-<nav>
-    <a href="#ramen">Ramen</a>
-    <a href="#pasta">Wine Pastas</a>
-    <a href="#pizza">Pizzas</a>
-    <a href="#coffee">Beverages</a>
-</nav>
-
-<div class="container">
-
-    <div class="section-header" id="ramen">
-        <h2>HOT POT RAMEN NOODLES</h2>
-    </div>
+<main>
+  <!-- HOT POT RAMEN NOODLES -->
+  <section id="hotpot" class="menu-section">
+    <h2>Hot Pot Ramen Noodles</h2>
     <div class="menu-grid">
-        <div class="menu-item">
-            <div class="item-top"><span class="item-name">THAI COCONUT CURRY</span> <span class="price">Rs.240</span></div>
-            <p class="desc">Red or Green Curry base with rich coconut milk and spices.</p>
-            <span class="label chef">👨‍🍳 CHEF'S SPECIAL</span> <span class="label spicy">🌶️ MEDIUM</span>
-        </div>
-        <div class="menu-item">
-            <div class="item-top"><span class="item-name">PERI PERI CHEESE</span> <span class="price">Rs.220</span></div>
-            <p class="desc">Spicy peri-peri heat balanced with creamy melted cheese.</p>
-            <span class="label spicy">🌶️🌶️ SPICY</span>
-        </div>
-        <div class="menu-item">
-            <div class="item-top"><span class="item-name">KOREAN RED PEPPER SAUCE</span> <span class="price">Rs.240</span></div>
-            <p class="desc">Authentic spicy Korean Gochujang style noodles.</p>
-            <span class="label spicy">🌶️🌶️ SPICY</span>
-        </div>
+      <div class="card">
+        <h3>Masala Cheese</h3>
+        <p>Comfort masala ramen topped with cheese.</p>
+        <span class="price">Rs.200</span>
+      </div>
+      <div class="card">
+        <h3>Peri Peri Cheese</h3>
+        <p>Spicy peri peri flavours with creamy cheese.</p>
+        <span class="price">Rs.220</span>
+      </div>
+      <div class="card">
+        <h3>Thai Coconut Curry (Red/Green)</h3>
+        <p>Rich Thai style coconut curry broth.</p>
+        <span class="price">Rs.240</span>
+      </div>
+      <div class="card">
+        <h3>Spicy Coconut Curry</h3>
+        <p>Coconut base with extra chilli kick.</p>
+        <span class="price">Rs.240</span>
+      </div>
+      <div class="card">
+        <h3>Cream Cheese Garlic</h3>
+        <p>Garlicky ramen with smooth cream cheese.</p>
+        <span class="price">Rs.240</span>
+      </div>
+      <div class="card">
+        <h3>Korean Red Pepper Sauce</h3>
+        <p>Gochujang inspired spicy Korean broth.</p>
+        <span class="price">Rs.240</span>
+      </div>
     </div>
+  </section>
 
-    <div class="section-header" id="pasta">
-        <h2>WINE PASTAS</h2>
-    </div>
+  <!-- SALAD BOWLS -->
+  <section id="salads" class="menu-section alt">
+    <h2>Salad Bowls</h2>
     <div class="menu-grid">
-        <div class="menu-item">
-            <div class="item-top"><span class="item-name">SMOKED MAKHANI PASTA</span> <span class="price">Rs.320</span></div>
-            <p class="desc">A MUST TRY - In-house special pasta with a signature smoky twist.</p>
-            <span class="label chef">👨‍🍳 CHEF'S SPECIAL</span>
-        </div>
-        <div class="menu-item">
-            <div class="item-top"><span class="item-name">EPINARD ET AU CITRON</span> <span class="price">Rs.280</span></div>
-            <p class="desc">Pasta prepared in a creamy spinach and zesty lemon sauce.</p>
-            <span class="label chef">👨‍🍳 CHEF'S SPECIAL</span>
-        </div>
-        <div class="menu-item">
-            <div class="item-top"><span class="item-name">SMOKED CREME DE MORNAY</span> <span class="price">Rs.280</span></div>
-            <p class="desc">Loaded cheesy pasta topped with delicious smoked cheese.</p>
-        </div>
-        <div class="menu-item">
-            <div class="item-top"><span class="item-name">FUSILLI LE ROUGE</span> <span class="price">Rs.260</span></div>
-            <p class="desc">Pasta prepared in classic tangy tomato sauce with exotic vegetables.</p>
-        </div>
+      <div class="card">
+        <h3>Greek Salad Bowl</h3>
+        <p>Lettuce, diced bell peppers, grilled cherry tomatoes, olives & cream cheese sauce.</p>
+        <span class="price">Rs.220</span>
+      </div>
+      <div class="card">
+        <h3>Green Goddess Bowl</h3>
+        <p>Iceberg, green peas, chickpeas & corn in lemon dressing, served with hummus.</p>
+        <span class="price">Rs.250</span>
+      </div>
+      <div class="card">
+        <h3>Soundtrack Special Salad Bowl</h3>
+        <p>Iceberg, lettuce, fried garlic in lemon honey dressing topped with grilled paneer.</p>
+        <span class="price">Rs.250</span>
+      </div>
     </div>
+  </section>
 
-    <div class="section-header" id="coffee">
-        <h2>OVERLOAD DESSERT COFFEE</h2>
-    </div>
+  <!-- RICE BOWLS -->
+  <section id="rice" class="menu-section">
+    <h2>Rice Bowls (White/Brown)</h2>
     <div class="menu-grid">
-        <div class="menu-item">
-            <div class="item-top"><span class="item-name">SOUNDTRACK BLAST</span> <span class="price">Rs.240</span></div>
-            <p class="desc">Our signature thick dessert coffee - a hit for music lovers.</p>
-        </div>
-        <div class="menu-item">
-            <div class="item-top"><span class="item-name">COOKIE CRUNCH BLAST</span> <span class="price">Rs.240</span></div>
-            <p class="desc">Blended coffee with crunchy cookie chunks and chocolate drizzle.</p>
-        </div>
+      <div class="card">
+        <h3>Thai Coconut Curry (Red/Green)</h3>
+        <p>Curry served over steamed rice.</p>
+        <span class="price">Rs.280 / 300</span>
+      </div>
+      <div class="card">
+        <h3>Veg Paprika Curry</h3>
+        <p>Vegetable paprika gravy with rice.</p>
+        <span class="price">Rs.280 / 300</span>
+      </div>
+    </div>
+    <p class="note">Add-on boiled eggs: Rs.30</p>
+  </section>
+
+  <!-- MOJITOS -->
+  <section id="mojito" class="menu-section alt">
+    <h2>Mojitos</h2>
+    <div class="menu-grid">
+      <div class="card"><h3>Classic Mojito</h3><span class="price">Rs.160</span></div>
+      <div class="card"><h3>Watermelon Mojito</h3><span class="price">Rs.180</span></div>
+      <div class="card"><h3>Blueberry Mojito</h3><span class="price">Rs.180</span></div>
+      <div class="card"><h3>Strawberry Mojito</h3><span class="price">Rs.180</span></div>
+      <div class="card"><h3>Bubble Gum Mojito</h3><span class="price">Rs.180</span></div>
     </div>
 
-</div>
+    <h2 class="subhead">Mint Lovers</h2>
+    <div class="menu-grid">
+      <div class="card"><h3>Sweet Rose Mint</h3><span class="price">Rs.200</span></div>
+      <div class="card"><h3>Bubble Gum Mint</h3><span class="price">Rs.200</span></div>
+      <div class="card"><h3>Watermelon Mint</h3><span class="price">Rs.200</span></div>
+      <div class="card"><h3>Strawberry Mint</h3><span class="price">Rs.200</span></div>
+      <div class="card"><h3>Popcorn Mint</h3><span class="price">Rs.200</span></div>
+    </div>
+  </section>
+
+  <!-- BLACK TEA -->
+  <section id="tea" class="menu-section">
+    <h2>Black Tea</h2>
+    <div class="menu-grid">
+      <div class="card">
+        <h3>Ginger Honey Tea</h3>
+        <p>Black tea with ginger, lemon flavour & honey.</p>
+        <span class="price">Rs.140</span>
+      </div>
+      <div class="card">
+        <h3>Kesar Rose Tea</h3>
+        <p>Dessert-like blend with saffron & rose.</p>
+        <span class="price">Rs.160</span>
+      </div>
+      <div class="card">
+        <h3>Mint Jamun Black Tea</h3>
+        <p>Refreshing mint & jamun flavours served cold or hot.</p>
+        <span class="price">Rs.160</span>
+      </div>
+      <div class="card">
+        <h3>Chilli Berry Black Tea</h3>
+        <p>Spiced tea with fruity sweetness & light heat.</p>
+        <span class="price">Rs.160</span>
+      </div>
+      <div class="card">
+        <h3>Nilgiri Jasmine Black Tea</h3>
+        <p>Tea scented with jasmine aromas.</p>
+        <span class="price">Rs.160</span>
+      </div>
+      <div class="card">
+        <h3>English Breakfast Tea</h3>
+        <p>Strong classic breakfast blend.</p>
+        <span class="price">Rs.160</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALL DAY FRANKY -->
+  <section id="franky" class="menu-section alt">
+    <h2>All Day Franky (Veg/Egg)</h2>
+    <p class="note">Served with green chutney, fries & salad.</p>
+    <div class="menu-grid">
+      <div class="card">
+        <h3>Paneer/Mushroom Tikka</h3>
+        <p>Paneer or mushrooms tossed in tandoori masala, topped with cheese blend.</p>
+        <span class="price">Rs.230 / 250</span>
+      </div>
+      <div class="card">
+        <h3>Mashed Paneer</h3>
+        <p>Indian style paneer bhurji topped with cheese blend.</p>
+        <span class="price">Rs.230 / 250</span>
+      </div>
+      <div class="card">
+        <h3>Mix Veg</h3>
+        <p>Mixed vegetables in tandoori masala with cheese.</p>
+        <span class="price">Rs.230 / 250</span>
+      </div>
+      <div class="card">
+        <h3>Spicy Beans & Chilly</h3>
+        <p>Baked beans & mixed veggies in island sauce with cheese blend.</p>
+        <span class="price">Rs.230 / 250</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WINE PASTAS -->
+  <section id="pasta" class="menu-section">
+    <h2>Wine Pastas</h2>
+    <div class="menu-grid">
+      <div class="card">
+        <h3>Fusilli Le Blanc</h3>
+        <p>Pasta in béchamel sauce with exotic vegetables.</p>
+        <span class="price">Rs.260</span>
+      </div>
+      <div class="card">
+        <h3>Fusilli Le Rouge</h3>
+        <p>Pasta in tomato sauce with vegetables.</p>
+        <span class="price">Rs.260</span>
+      </div>
+      <div class="card">
+        <h3>Crème de Pomodoro</h3>
+        <p>Tomato cream sauce pasta with veggies.</p>
+        <span class="price">Rs.260</span>
+      </div>
+      <div class="card">
+        <h3>Epinard et au Citron</h3>
+        <p>Creamy spinach & lemon sauce pasta.</p>
+        <span class="price">Rs.280</span>
+      </div>
+      <div class="card">
+        <h3>Smoked Crème Mornay</h3>
+        <p>Loaded cheesy pasta topped with smoke.</p>
+        <span class="price">Rs.280</span>
+      </div>
+      <div class="card">
+        <h3>Spicy Pepper</h3>
+        <p>Pasta in Korean gochujang sauce.</p>
+        <span class="price">Rs.280</span>
+      </div>
+      <div class="card">
+        <h3>Smoked Makhani Pasta</h3>
+        <p>In-house makhani sauce with smoky twist.</p>
+        <span class="price">Rs.320</span>
+      </div>
+    </div>
+  </section>
+</main>
 
 <footer>
-    <p>Visit us at Soundtrack Cafe</p>
-    <p style="font-size: 0.7rem; opacity: 0.6; margin-top: 20px;">DESIGNED FOR THE LOVE OF MUSIC & FOOD</p>
+  <p>&copy; 2025 Soundtrack Cafe • Open everyday 8AM – 11:30PM</p>
 </footer>
 
+<script src="script.js"></script>
 </body>
-</html>.
+</html>
