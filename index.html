@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Soundtrack Cafe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: #f6efe6;
+      color: #2c2c2c;
+    }
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      animation: fadeDown 1.2s ease;
+    }
+    h1 {
+      font-size: 42px;
+      margin-bottom: 5px;
+    }
+    section {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      animation: fadeUp 1s ease;
+    }
+    .card h2 {
+      margin-bottom: 10px;
+    }
+    .item {
+      display: flex;
+      justify-content: space-between;
+      margin: 6px 0;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      opacity: 0.6;
+    }
+    @keyframes fadeUp {
+      from {opacity:0; transform: translateY(30px);}
+      to {opacity:1; transform: translateY(0);}
+    }
+    @keyframes fadeDown {
+      from {opacity:0; transform: translateY(-30px);}
+      to {opacity:1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Soundtrack Cafe</h1>
+  <p>Open Everyday · 8:00 AM – 11:30 PM</p>
+</header>
+
+<section>
+  <div class="card">
+    <h2>☕ Beverages</h2>
+    <div class="item"><span>Espresso</span><span>Rs.100</span></div>
+    <div class="item"><span>Cappuccino</span><span>Rs.140</span></div>
+    <div class="item"><span>Cafe Latte</span><span>Rs.150</span></div>
+  </div>
+
+  <div class="card">
+    <h2>🍕 Pizzas</h2>
+    <div class="item"><span>Classic Margherita</span><span>Rs.250</span></div>
+    <div class="item"><span>Veg Hawaiian</span><span>Rs.280</span></div>
+    <div class="item"><span>Paneer Tikka</span><span>Rs.320</span></div>
+  </div>
+
+  <div class="card">
+    <h2>🥪 Sandwiches</h2>
+    <div class="item"><span>Veg Cheese Sandwich</span><span>Rs.220</span></div>
+    <div class="item"><span>Double Decker Sandwich</span><span>Rs.280</span></div>
+  </div>
+</section>
+
+<footer>
+  © 2025 Soundtrack Cafe
+</footer>
+
+</body>
+</html>
