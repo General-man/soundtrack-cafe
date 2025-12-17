@@ -6,138 +6,117 @@
 <title>The Soundtrack Cafe</title>
 
 <style>
-/* -------- GLOBAL -------- */
-body{
-  margin:0;
-  font-family:'Segoe UI', sans-serif;
-  background:#0b0b0b;
-  color:#eee;
+:root{
+  --bg:#0d0d0d;
+  --card:#1b1b1b;
+  --accent:#f5c16c;
+  --text:#eaeaea;
+  --muted:#9a9a9a;
 }
 
-/* -------- HEADER -------- */
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:'Segoe UI', system-ui, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* HEADER */
 header{
-  background:#000;
   text-align:center;
-  padding:20px;
+  padding:22px;
+  background:#080808;
+  border-bottom:1px solid #1f1f1f;
 }
 
 header h1{
-  color:#f5c16c;
   margin:0;
+  color:var(--accent);
   letter-spacing:1px;
 }
 
-/* -------- LAYOUT -------- */
-.main{
-  display:flex;
-  min-height:100vh;
-}
-
-/* -------- SIDEBAR -------- */
-.sidebar{
-  width:220px;
-  background:#111;
-  padding:10px 0;
-}
-
-.sidebar button{
-  width:100%;
-  padding:14px;
-  background:none;
-  border:none;
-  color:#ccc;
-  text-align:left;
-  cursor:pointer;
-  font-size:14px;
-}
-
-.sidebar button:hover{
-  background:#1a1a1a;
-}
-
-.sidebar button.active{
-  color:#f5c16c;
-  background:#1a1a1a;
-  border-left:4px solid #f5c16c;
-}
-
-.control-btn{
-  font-weight:bold;
-  color:#f5c16c;
-}
-
-/* -------- CONTENT -------- */
-.content{
-  flex:1;
+/* MENU CONTAINER */
+.menu{
+  max-width:900px;
+  margin:auto;
   padding:20px;
 }
 
-/* -------- SECTIONS -------- */
-.section{
-  display:none;
-  margin-bottom:30px;
-  animation:fade 0.4s ease;
+/* CATEGORY */
+.category{
+  background:var(--card);
+  margin-bottom:14px;
+  border-radius:10px;
+  overflow:hidden;
 }
 
-.section.active{
+.category-header{
+  padding:16px 18px;
+  cursor:pointer;
+  font-size:16px;
+  font-weight:600;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.category-header:hover{
+  background:#222;
+}
+
+.arrow{
+  transition:transform .3s ease;
+}
+
+.category.open .arrow{
+  transform:rotate(180deg);
+}
+
+/* ITEMS */
+.items{
+  display:none;
+  padding:0 18px 16px;
+  animation:fade .4s ease;
+}
+
+.category.open .items{
   display:block;
 }
 
-.section h2{
-  color:#f5c16c;
-  border-bottom:1px solid #333;
-  padding-bottom:6px;
+.item{
+  padding:10px 0;
+  border-bottom:1px dashed #2a2a2a;
 }
 
-/* -------- ITEMS -------- */
-.item{
-  background:#1a1a1a;
-  padding:12px;
-  margin-top:12px;
-  border-radius:8px;
+.item:last-child{
+  border-bottom:none;
 }
 
 .item-title{
   display:flex;
   justify-content:space-between;
-  font-weight:600;
+  font-size:14px;
+  font-weight:500;
 }
 
 .desc{
   font-size:13px;
-  opacity:0.75;
-  margin-top:5px;
+  color:var(--muted);
+  margin-top:4px;
 }
 
 .price{
-  color:#f5c16c;
+  color:var(--accent);
 }
 
-/* -------- ANIMATION -------- */
+/* ANIMATION */
 @keyframes fade{
   from{opacity:0; transform:translateY(10px);}
   to{opacity:1; transform:translateY(0);}
-}
-
-/* -------- MOBILE -------- */
-@media(max-width:768px){
-  .main{
-    flex-direction:column;
-  }
-  .sidebar{
-    width:100%;
-    display:flex;
-    overflow-x:auto;
-  }
-  .sidebar button{
-    flex:1;
-    text-align:center;
-    border-left:none;
-    border-bottom:3px solid transparent;
-  }
-  .sidebar button.active{
-    border-bottom:3px solid #f5c16c;
-  }
 }
 </style>
 </head>
@@ -148,117 +127,109 @@ header h1{
   <h1>🎵 The Soundtrack Cafe</h1>
 </header>
 
-<div class="main">
-
-<!-- SIDEBAR -->
-<div class="sidebar">
-  <button class="control-btn" onclick="openAll()">Open All</button>
-  <button class="control-btn" onclick="closeAll()">Close All</button>
-
-  <button onclick="toggleSection('sandwich', this)">Sandwiches</button>
-  <button onclick="toggleSection('subs', this)">Subs & Burgers</button>
-  <button onclick="toggleSection('breakfast', this)">Breakfast</button>
-  <button onclick="toggleSection('beverages', this)">Beverages</button>
-  <button onclick="toggleSection('franky', this)">All Day Franky</button>
-  <button onclick="toggleSection('pasta', this)">Wine Pastas</button>
-  <button onclick="toggleSection('greentea', this)">Green Tea</button>
-</div>
-
-<!-- CONTENT -->
-<div class="content">
+<div class="menu">
 
 <!-- SANDWICHES -->
-<div id="sandwich" class="section">
-<h2>Sandwiches</h2>
-
-<div class="item">
-  <div class="item-title"><span>Veg Cheese Sandwich</span><span class="price">₹220</span></div>
-  <div class="desc">Cream cheese sauce, fresh veggies, green chutney, salad & chips</div>
-</div>
-
-<div class="item">
-  <div class="item-title"><span>Tikka Sandwich (Paneer/Mushroom)</span><span class="price">₹240</span></div>
-</div>
-
-<div class="item">
-  <div class="item-title"><span>Spicy Chilly Sandwich</span><span class="price">₹240</span></div>
-</div>
-
-<div class="item">
-  <div class="item-title"><span>Double Decker Sandwich</span><span class="price">₹280</span></div>
-</div>
-
-<div class="item">
-  <div class="item-title"><span>Croque Madame</span><span class="price">₹300</span></div>
-</div>
+<div class="category">
+  <div class="category-header" onclick="toggle(this)">
+    Sandwiches <span class="arrow">▼</span>
+  </div>
+  <div class="items">
+    <div class="item">
+      <div class="item-title"><span>Veg Cheese Sandwich</span><span class="price">₹220</span></div>
+      <div class="desc">Cream cheese sauce, fresh veggies, salad & chips</div>
+    </div>
+    <div class="item">
+      <div class="item-title"><span>Tikka Sandwich (Paneer/Mushroom)</span><span class="price">₹240</span></div>
+    </div>
+    <div class="item">
+      <div class="item-title"><span>Spicy Chilly Sandwich</span><span class="price">₹240</span></div>
+    </div>
+    <div class="item">
+      <div class="item-title"><span>Double Decker Sandwich</span><span class="price">₹280</span></div>
+    </div>
+    <div class="item">
+      <div class="item-title"><span>Croque Madame</span><span class="price">₹300</span></div>
+    </div>
+  </div>
 </div>
 
 <!-- SUBS -->
-<div id="subs" class="section">
-<h2>Subs & Burgers</h2>
-<div class="item"><div class="item-title"><span>Indo Mexican Sub</span><span class="price">₹280</span></div></div>
-<div class="item"><div class="item-title"><span>Veg Californian Sub</span><span class="price">₹280</span></div></div>
-<div class="item"><div class="item-title"><span>Herb Chilly Potato Burger</span></div></div>
+<div class="category">
+  <div class="category-header" onclick="toggle(this)">
+    Subs & Burgers <span class="arrow">▼</span>
+  </div>
+  <div class="items">
+    <div class="item"><div class="item-title"><span>Indo Mexican Sub</span><span class="price">₹280</span></div></div>
+    <div class="item"><div class="item-title"><span>Veg Californian Sub</span><span class="price">₹280</span></div></div>
+    <div class="item"><div class="item-title"><span>Herb Chilly Potato Burger</span></div></div>
+  </div>
 </div>
 
 <!-- BREAKFAST -->
-<div id="breakfast" class="section">
-<h2>Breakfast (8:00 AM – 11:30 AM)</h2>
-<div class="item"><div class="item-title"><span>Continental Breakfast</span><span class="price">₹320</span></div></div>
-<div class="item"><div class="item-title"><span>Indo American Fusion Breakfast</span><span class="price">₹320</span></div></div>
-<div class="item"><div class="item-title"><span>Regular Omelettes</span><span class="price">₹180</span></div></div>
-<div class="item"><div class="item-title"><span>Premium Omelettes</span><span class="price">₹220</span></div></div>
+<div class="category">
+  <div class="category-header" onclick="toggle(this)">
+    Breakfast <span class="arrow">▼</span>
+  </div>
+  <div class="items">
+    <div class="item"><div class="item-title"><span>Continental Breakfast</span><span class="price">₹320</span></div></div>
+    <div class="item"><div class="item-title"><span>Indo American Fusion</span><span class="price">₹320</span></div></div>
+    <div class="item"><div class="item-title"><span>Regular Omelettes</span><span class="price">₹180</span></div></div>
+    <div class="item"><div class="item-title"><span>Premium Omelettes</span><span class="price">₹220</span></div></div>
+  </div>
 </div>
 
 <!-- BEVERAGES -->
-<div id="beverages" class="section">
-<h2>Beverages</h2>
-<div class="item"><div class="item-title"><span>Espresso</span><span class="price">₹100</span></div></div>
-<div class="item"><div class="item-title"><span>Cappuccino</span><span class="price">₹140</span></div></div>
-<div class="item"><div class="item-title"><span>Cafe Latte</span><span class="price">₹150</span></div></div>
+<div class="category">
+  <div class="category-header" onclick="toggle(this)">
+    Beverages <span class="arrow">▼</span>
+  </div>
+  <div class="items">
+    <div class="item"><div class="item-title"><span>Espresso</span><span class="price">₹100</span></div></div>
+    <div class="item"><div class="item-title"><span>Cappuccino</span><span class="price">₹140</span></div></div>
+    <div class="item"><div class="item-title"><span>Cafe Latte</span><span class="price">₹150</span></div></div>
+  </div>
 </div>
 
 <!-- FRANKY -->
-<div id="franky" class="section">
-<h2>All Day Franky</h2>
-<div class="item"><div class="item-title"><span>Paneer/Mushroom Tikka</span><span class="price">₹230/250</span></div></div>
-<div class="item"><div class="item-title"><span>Mashed Paneer</span><span class="price">₹230/250</span></div></div>
+<div class="category">
+  <div class="category-header" onclick="toggle(this)">
+    All Day Franky <span class="arrow">▼</span>
+  </div>
+  <div class="items">
+    <div class="item"><div class="item-title"><span>Paneer / Mushroom Tikka</span><span class="price">₹230 / 250</span></div></div>
+    <div class="item"><div class="item-title"><span>Mashed Paneer</span><span class="price">₹230 / 250</span></div></div>
+  </div>
 </div>
 
 <!-- PASTA -->
-<div id="pasta" class="section">
-<h2>Wine Pastas</h2>
-<div class="item"><div class="item-title"><span>Fusilli Le Blanc</span><span class="price">₹260</span></div></div>
-<div class="item"><div class="item-title"><span>Smoked Makhani Pasta</span><span class="price">₹320</span></div></div>
+<div class="category">
+  <div class="category-header" onclick="toggle(this)">
+    Wine Pastas <span class="arrow">▼</span>
+  </div>
+  <div class="items">
+    <div class="item"><div class="item-title"><span>Fusilli Le Blanc</span><span class="price">₹260</span></div></div>
+    <div class="item"><div class="item-title"><span>Smoked Makhani Pasta</span><span class="price">₹320</span></div></div>
+  </div>
 </div>
 
 <!-- GREEN TEA -->
-<div id="greentea" class="section">
-<h2>Green Tea</h2>
-<div class="item"><div class="item-title"><span>Tulsi Green Tea</span><span class="price">₹160</span></div></div>
-<div class="item"><div class="item-title"><span>Kashmiri Kahwa</span><span class="price">₹170</span></div></div>
-<div class="item"><div class="item-title"><span>Pure Matcha</span><span class="price">₹200</span></div></div>
+<div class="category">
+  <div class="category-header" onclick="toggle(this)">
+    Green Tea <span class="arrow">▼</span>
+  </div>
+  <div class="items">
+    <div class="item"><div class="item-title"><span>Tulsi Green Tea</span><span class="price">₹160</span></div></div>
+    <div class="item"><div class="item-title"><span>Kashmiri Kahwa</span><span class="price">₹170</span></div></div>
+    <div class="item"><div class="item-title"><span>Pure Matcha</span><span class="price">₹200</span></div></div>
+  </div>
 </div>
 
-</div>
 </div>
 
 <script>
-function toggleSection(id, btn){
-  document.getElementById(id).classList.toggle('active');
-  btn.classList.toggle('active');
-}
-
-function openAll(){
-  document.querySelectorAll('.section').forEach(s=>s.classList.add('active'));
-  document.querySelectorAll('.sidebar button').forEach(b=>{
-    if(!b.classList.contains('control-btn')) b.classList.add('active');
-  });
-}
-
-function closeAll(){
-  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
-  document.querySelectorAll('.sidebar button').forEach(b=>b.classList.remove('active'));
+function toggle(el){
+  el.parentElement.classList.toggle('open');
 }
 </script>
 
