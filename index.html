@@ -36,10 +36,10 @@ header{
 header h1{
   margin:0;
   color:var(--accent);
-  letter-spacing:1px;
+  letter-spacing:1.5px;
 }
 
-/* MENU CONTAINER */
+/* MENU */
 .menu{
   max-width:900px;
   margin:auto;
@@ -49,38 +49,28 @@ header h1{
 /* CATEGORY */
 .category{
   background:var(--card);
-  margin-bottom:14px;
-  border-radius:10px;
+  margin-bottom:16px;
+  border-radius:12px;
   overflow:hidden;
 }
 
 .category-header{
-  padding:16px 18px;
+  padding:20px;
   cursor:pointer;
-  font-size:16px;
-  font-weight:600;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  font-size:20px;          /* 🔥 NAME BIGGER */
+  font-weight:700;         /* 🔥 BOLD */
+  letter-spacing:1px;
 }
 
 .category-header:hover{
-  background:#222;
-}
-
-.arrow{
-  transition:transform .3s ease;
-}
-
-.category.open .arrow{
-  transform:rotate(180deg);
+  background:#242424;
 }
 
 /* ITEMS */
 .items{
   display:none;
-  padding:0 18px 16px;
-  animation:fade .4s ease;
+  padding:0 20px 18px;
+  animation:fade .35s ease;
 }
 
 .category.open .items{
@@ -88,7 +78,7 @@ header h1{
 }
 
 .item{
-  padding:10px 0;
+  padding:12px 0;
   border-bottom:1px dashed #2a2a2a;
 }
 
@@ -99,7 +89,7 @@ header h1{
 .item-title{
   display:flex;
   justify-content:space-between;
-  font-size:14px;
+  font-size:15px;
   font-weight:500;
 }
 
@@ -115,7 +105,7 @@ header h1{
 
 /* ANIMATION */
 @keyframes fade{
-  from{opacity:0; transform:translateY(10px);}
+  from{opacity:0; transform:translateY(8px);}
   to{opacity:1; transform:translateY(0);}
 }
 </style>
@@ -129,48 +119,22 @@ header h1{
 
 <div class="menu">
 
-<!-- SANDWICHES -->
 <div class="category">
-  <div class="category-header" onclick="toggle(this)">
-    Sandwiches <span class="arrow">▼</span>
-  </div>
+  <div class="category-header" onclick="toggle(this)">Sandwiches</div>
   <div class="items">
     <div class="item">
       <div class="item-title"><span>Veg Cheese Sandwich</span><span class="price">₹220</span></div>
       <div class="desc">Cream cheese sauce, fresh veggies, salad & chips</div>
     </div>
-    <div class="item">
-      <div class="item-title"><span>Tikka Sandwich (Paneer/Mushroom)</span><span class="price">₹240</span></div>
-    </div>
-    <div class="item">
-      <div class="item-title"><span>Spicy Chilly Sandwich</span><span class="price">₹240</span></div>
-    </div>
-    <div class="item">
-      <div class="item-title"><span>Double Decker Sandwich</span><span class="price">₹280</span></div>
-    </div>
-    <div class="item">
-      <div class="item-title"><span>Croque Madame</span><span class="price">₹300</span></div>
-    </div>
+    <div class="item"><div class="item-title"><span>Tikka Sandwich</span><span class="price">₹240</span></div></div>
+    <div class="item"><div class="item-title"><span>Spicy Chilly Sandwich</span><span class="price">₹240</span></div></div>
+    <div class="item"><div class="item-title"><span>Double Decker Sandwich</span><span class="price">₹280</span></div></div>
+    <div class="item"><div class="item-title"><span>Croque Madame</span><span class="price">₹300</span></div></div>
   </div>
 </div>
 
-<!-- SUBS -->
 <div class="category">
-  <div class="category-header" onclick="toggle(this)">
-    Subs & Burgers <span class="arrow">▼</span>
-  </div>
-  <div class="items">
-    <div class="item"><div class="item-title"><span>Indo Mexican Sub</span><span class="price">₹280</span></div></div>
-    <div class="item"><div class="item-title"><span>Veg Californian Sub</span><span class="price">₹280</span></div></div>
-    <div class="item"><div class="item-title"><span>Herb Chilly Potato Burger</span></div></div>
-  </div>
-</div>
-
-<!-- BREAKFAST -->
-<div class="category">
-  <div class="category-header" onclick="toggle(this)">
-    Breakfast <span class="arrow">▼</span>
-  </div>
+  <div class="category-header" onclick="toggle(this)">Breakfast</div>
   <div class="items">
     <div class="item"><div class="item-title"><span>Continental Breakfast</span><span class="price">₹320</span></div></div>
     <div class="item"><div class="item-title"><span>Indo American Fusion</span><span class="price">₹320</span></div></div>
@@ -179,11 +143,8 @@ header h1{
   </div>
 </div>
 
-<!-- BEVERAGES -->
 <div class="category">
-  <div class="category-header" onclick="toggle(this)">
-    Beverages <span class="arrow">▼</span>
-  </div>
+  <div class="category-header" onclick="toggle(this)">Beverages</div>
   <div class="items">
     <div class="item"><div class="item-title"><span>Espresso</span><span class="price">₹100</span></div></div>
     <div class="item"><div class="item-title"><span>Cappuccino</span><span class="price">₹140</span></div></div>
@@ -191,37 +152,19 @@ header h1{
   </div>
 </div>
 
-<!-- FRANKY -->
 <div class="category">
-  <div class="category-header" onclick="toggle(this)">
-    All Day Franky <span class="arrow">▼</span>
-  </div>
+  <div class="category-header" onclick="toggle(this)">All Day Franky</div>
   <div class="items">
     <div class="item"><div class="item-title"><span>Paneer / Mushroom Tikka</span><span class="price">₹230 / 250</span></div></div>
     <div class="item"><div class="item-title"><span>Mashed Paneer</span><span class="price">₹230 / 250</span></div></div>
   </div>
 </div>
 
-<!-- PASTA -->
 <div class="category">
-  <div class="category-header" onclick="toggle(this)">
-    Wine Pastas <span class="arrow">▼</span>
-  </div>
+  <div class="category-header" onclick="toggle(this)">Wine Pastas</div>
   <div class="items">
     <div class="item"><div class="item-title"><span>Fusilli Le Blanc</span><span class="price">₹260</span></div></div>
     <div class="item"><div class="item-title"><span>Smoked Makhani Pasta</span><span class="price">₹320</span></div></div>
-  </div>
-</div>
-
-<!-- GREEN TEA -->
-<div class="category">
-  <div class="category-header" onclick="toggle(this)">
-    Green Tea <span class="arrow">▼</span>
-  </div>
-  <div class="items">
-    <div class="item"><div class="item-title"><span>Tulsi Green Tea</span><span class="price">₹160</span></div></div>
-    <div class="item"><div class="item-title"><span>Kashmiri Kahwa</span><span class="price">₹170</span></div></div>
-    <div class="item"><div class="item-title"><span>Pure Matcha</span><span class="price">₹200</span></div></div>
   </div>
 </div>
 
