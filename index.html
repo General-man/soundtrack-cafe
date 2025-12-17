@@ -6,107 +6,122 @@
 <title>The Soundtrack Cafe</title>
 
 <style>
-:root{
-  --bg:#0d0d0d;
-  --card:#1b1b1b;
-  --accent:#f5c16c;
-  --text:#eaeaea;
-  --muted:#9a9a9a;
-}
-
-*{
-  box-sizing:border-box;
-}
-
 body{
   margin:0;
-  font-family:'Segoe UI', system-ui, sans-serif;
-  background:var(--bg);
-  color:var(--text);
+  font-family: 'Segoe UI', sans-serif;
+  background:#0b0b0b;
+  color:#eee;
 }
 
 /* HEADER */
 header{
   text-align:center;
-  padding:22px;
-  background:#080808;
-  border-bottom:1px solid #1f1f1f;
+  padding:20px;
+  background:#000;
 }
 
 header h1{
+  color:#f5c16c;
   margin:0;
-  color:var(--accent);
-  letter-spacing:1.5px;
 }
 
-/* MENU */
-.menu{
-  max-width:900px;
-  margin:auto;
-  padding:20px;
+/* LAYOUT */
+.main{
+  display:flex;
+  min-height:100vh;
 }
 
-/* CATEGORY */
-.category{
-  background:var(--card);
-  margin-bottom:16px;
-  border-radius:12px;
-  overflow:hidden;
+/* SIDEBAR */
+.sidebar{
+  width:200px;
+  background:#111;
+  padding-top:10px;
 }
 
-.category-header{
-  padding:20px;
+.sidebar button{
+  width:100%;
+  padding:15px;
+  background:none;
+  border:none;
+  color:#ccc;
+  text-align:left;
   cursor:pointer;
-  font-size:20px;          /* 🔥 NAME BIGGER */
-  font-weight:700;         /* 🔥 BOLD */
-  letter-spacing:1px;
+  font-size:14px;
 }
 
-.category-header:hover{
-  background:#242424;
+.sidebar button:hover{
+  background:#1a1a1a;
 }
 
-/* ITEMS */
-.items{
+.sidebar button.active{
+  color:#f5c16c;
+  background:#1a1a1a;
+  border-left:4px solid #f5c16c;
+}
+
+/* CONTENT */
+.content{
+  flex:1;
+  padding:20px;
+}
+
+/* SECTIONS */
+.section{
   display:none;
-  padding:0 20px 18px;
-  animation:fade .35s ease;
+  animation:fade 0.4s ease;
 }
 
-.category.open .items{
+.section.active{
   display:block;
 }
 
 .item{
-  padding:12px 0;
-  border-bottom:1px dashed #2a2a2a;
-}
-
-.item:last-child{
-  border-bottom:none;
+  background:#1a1a1a;
+  padding:12px;
+  margin-bottom:12px;
+  border-radius:8px;
 }
 
 .item-title{
   display:flex;
   justify-content:space-between;
-  font-size:15px;
-  font-weight:500;
+  font-weight:600;
 }
 
 .desc{
   font-size:13px;
-  color:var(--muted);
-  margin-top:4px;
+  opacity:0.75;
+  margin-top:5px;
 }
 
 .price{
-  color:var(--accent);
+  color:#f5c16c;
 }
 
-/* ANIMATION */
 @keyframes fade{
-  from{opacity:0; transform:translateY(8px);}
+  from{opacity:0; transform:translateY(10px);}
   to{opacity:1; transform:translateY(0);}
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .main{
+    flex-direction:column;
+  }
+  .sidebar{
+    width:100%;
+    display:flex;
+    overflow-x:auto;
+  }
+  .sidebar button{
+    flex:1;
+    text-align:center;
+    border-left:none;
+    border-bottom:3px solid transparent;
+  }
+  .sidebar button.active{
+    border-bottom:3px solid #f5c16c;
+  }
 }
 </style>
 </head>
@@ -117,64 +132,11 @@ header h1{
   <h1>🎵 The Soundtrack Cafe</h1>
 </header>
 
-<div class="menu">
+<div class="main">
 
-<div class="category">
-  <div class="category-header" onclick="toggle(this)">Sandwiches</div>
-  <div class="items">
-    <div class="item">
-      <div class="item-title"><span>Veg Cheese Sandwich</span><span class="price">₹220</span></div>
-      <div class="desc">Cream cheese sauce, fresh veggies, salad & chips</div>
-    </div>
-    <div class="item"><div class="item-title"><span>Tikka Sandwich</span><span class="price">₹240</span></div></div>
-    <div class="item"><div class="item-title"><span>Spicy Chilly Sandwich</span><span class="price">₹240</span></div></div>
-    <div class="item"><div class="item-title"><span>Double Decker Sandwich</span><span class="price">₹280</span></div></div>
-    <div class="item"><div class="item-title"><span>Croque Madame</span><span class="price">₹300</span></div></div>
-  </div>
-</div>
-
-<div class="category">
-  <div class="category-header" onclick="toggle(this)">Breakfast</div>
-  <div class="items">
-    <div class="item"><div class="item-title"><span>Continental Breakfast</span><span class="price">₹320</span></div></div>
-    <div class="item"><div class="item-title"><span>Indo American Fusion</span><span class="price">₹320</span></div></div>
-    <div class="item"><div class="item-title"><span>Regular Omelettes</span><span class="price">₹180</span></div></div>
-    <div class="item"><div class="item-title"><span>Premium Omelettes</span><span class="price">₹220</span></div></div>
-  </div>
-</div>
-
-<div class="category">
-  <div class="category-header" onclick="toggle(this)">Beverages</div>
-  <div class="items">
-    <div class="item"><div class="item-title"><span>Espresso</span><span class="price">₹100</span></div></div>
-    <div class="item"><div class="item-title"><span>Cappuccino</span><span class="price">₹140</span></div></div>
-    <div class="item"><div class="item-title"><span>Cafe Latte</span><span class="price">₹150</span></div></div>
-  </div>
-</div>
-
-<div class="category">
-  <div class="category-header" onclick="toggle(this)">All Day Franky</div>
-  <div class="items">
-    <div class="item"><div class="item-title"><span>Paneer / Mushroom Tikka</span><span class="price">₹230 / 250</span></div></div>
-    <div class="item"><div class="item-title"><span>Mashed Paneer</span><span class="price">₹230 / 250</span></div></div>
-  </div>
-</div>
-
-<div class="category">
-  <div class="category-header" onclick="toggle(this)">Wine Pastas</div>
-  <div class="items">
-    <div class="item"><div class="item-title"><span>Fusilli Le Blanc</span><span class="price">₹260</span></div></div>
-    <div class="item"><div class="item-title"><span>Smoked Makhani Pasta</span><span class="price">₹320</span></div></div>
-  </div>
-</div>
-
-</div>
-
-<script>
-function toggle(el){
-  el.parentElement.classList.toggle('open');
-}
-</script>
-
-</body>
-</html>
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <button class="active" onclick="showSection('sandwich', this)">Sandwiches</button>
+    <button onclick="showSection('subs', this)">Subs & Burgers</button>
+    <button onclick="showSection('breakfast', this)">Breakfast</button>
+    <
