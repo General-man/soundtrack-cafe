@@ -1,124 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Soundtrack Cafe</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soundtrack Cafe | Full Menu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f4eee8;
+            --accent-red: #8b261e;
+            --text-dark: #222;
+            --vinyl-black: #1a1a1a;
+        }
 
-<style>
-body{
-  margin:0;
-  font-family:Arial, sans-serif;
-  background:#0f0f0f;
-  color:#f5f5f5;
-}
-header{
-  text-align:center;
-  padding:30px;
-  animation:fadeDown 1.2s;
-}
-h1{font-size:40px;color:#ffcc70}
-section{padding:15px}
-.card{
-  background:#1c1c1c;
-  margin:15px 0;
-  padding:20px;
-  border-radius:16px;
-  box-shadow:0 8px 25px rgba(0,0,0,0.4);
-  animation:fadeUp 1s;
-}
-.card img{
-  width:100%;
-  border-radius:12px;
-  margin-bottom:10px;
-}
-.item{
-  display:flex;
-  justify-content:space-between;
-  margin:6px 0;
-}
-.whatsapp{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#25D366;
-  color:#fff;
-  padding:14px 18px;
-  border-radius:50px;
-  text-decoration:none;
-  font-weight:bold;
-  box-shadow:0 8px 20px rgba(0,0,0,.5);
-}
-footer{
-  text-align:center;
-  font-size:12px;
-  opacity:.6;
-  padding:20px;
-}
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(30px)}
-  to{opacity:1;transform:translateY(0)}
-}
-@keyframes fadeDown{
-  from{opacity:0;transform:translateY(-30px)}
-  to{opacity:1;transform:translateY(0)}
-}
-</style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            margin: 0;
+            scroll-behavior: smooth;
+            line-height: 1.6;
+        }
+
+        /* --- Header --- */
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: #fff;
+            border-bottom: 10px solid var(--accent-red);
+        }
+
+        .record {
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, var(--accent-red) 18%, #333 19%, #1a1a1a 22%, #333 23%, #1a1a1a 100%);
+            border-radius: 50%;
+            margin: 0 auto;
+            animation: spin 5s linear infinite;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        h1 { letter-spacing: 10px; text-transform: uppercase; margin: 20px 0 5px; font-weight: 700; }
+        .sub-header { color: #777; font-size: 0.9rem; letter-spacing: 2px; }
+
+        /* --- Navigation --- */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255,255,255,0.98);
+            padding: 15px 0;
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav a {
+            margin: 0 12px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 0.8rem;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        nav a:hover { color: var(--accent-red); }
+
+        /* --- Menu Sections --- */
+        .container { max-width: 1100px; margin: auto; padding: 40px 20px; }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin: 50px 0 30px;
+            border-left: 5px solid var(--accent-red);
+            padding-left: 15px;
+        }
+
+        .section-header h2 { margin: 0; letter-spacing: 3px; font-size: 1.8rem; }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .menu-item {
+            background: white;
+            padding: 25px;
+            border-radius: 4px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-bottom: 1px solid #eee;
+        }
+
+        .menu-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            border-color: var(--accent-red);
+        }
+
+        .item-top { display: flex; justify-content: space-between; align-items: baseline; }
+        .item-name { font-weight: 700; font-size: 1.1rem; color: #111; }
+        .price { color: var(--accent-red); font-weight: 700; }
+
+        .desc { font-size: 0.85rem; color: #666; margin-top: 10px; font-style: italic; }
+
+        .label {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 3px;
+            background: #f0f0f0;
+            font-weight: bold;
+        }
+
+        .spicy { color: #e74c3c; border: 1px solid #e74c3c; background: #fff5f5; }
+        .chef { color: #d4af37; border: 1px solid #d4af37; background: #fffdf0; }
+
+        footer { text-align: center; padding: 60px; background: #1a1a1a; color: #fff; margin-top: 50px; }
+    </style>
 </head>
-
 <body>
 
 <header>
-<h1>🎵 Soundtrack Cafe</h1>
-<p>Open Everyday · 8:00 AM – 11:30 PM</p>
+    <div class="record"></div>
+    <h1>SOUNDTRACK CAFE</h1>
+    <p class="sub-header">OPEN EVERYDAY | 08:00 AM - 11:30 PM</p>
 </header>
 
-<section>
+<nav>
+    <a href="#ramen">Ramen</a>
+    <a href="#pasta">Wine Pastas</a>
+    <a href="#pizza">Pizzas</a>
+    <a href="#coffee">Beverages</a>
+</nav>
 
-<div class="card">
-<img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93">
-<h2>☕ Beverages</h2>
-<div class="item"><span>Espresso</span><span>₹100</span></div>
-<div class="item"><span>Cappuccino</span><span>₹140</span></div>
-<div class="item"><span>Cafe Latte</span><span>₹150</span></div>
-<div class="item"><span>Mocha Frappe</span><span>₹200</span></div>
+<div class="container">
+
+    <div class="section-header" id="ramen">
+        <h2>HOT POT RAMEN NOODLES</h2>
+    </div>
+    <div class="menu-grid">
+        <div class="menu-item">
+            <div class="item-top"><span class="item-name">THAI COCONUT CURRY</span> <span class="price">Rs.240</span></div>
+            <p class="desc">Red or Green Curry base with rich coconut milk and spices.</p>
+            <span class="label chef">👨‍🍳 CHEF'S SPECIAL</span> <span class="label spicy">🌶️ MEDIUM</span>
+        </div>
+        <div class="menu-item">
+            <div class="item-top"><span class="item-name">PERI PERI CHEESE</span> <span class="price">Rs.220</span></div>
+            <p class="desc">Spicy peri-peri heat balanced with creamy melted cheese.</p>
+            <span class="label spicy">🌶️🌶️ SPICY</span>
+        </div>
+        <div class="menu-item">
+            <div class="item-top"><span class="item-name">KOREAN RED PEPPER SAUCE</span> <span class="price">Rs.240</span></div>
+            <p class="desc">Authentic spicy Korean Gochujang style noodles.</p>
+            <span class="label spicy">🌶️🌶️ SPICY</span>
+        </div>
+    </div>
+
+    <div class="section-header" id="pasta">
+        <h2>WINE PASTAS</h2>
+    </div>
+    <div class="menu-grid">
+        <div class="menu-item">
+            <div class="item-top"><span class="item-name">SMOKED MAKHANI PASTA</span> <span class="price">Rs.320</span></div>
+            <p class="desc">A MUST TRY - In-house special pasta with a signature smoky twist.</p>
+            <span class="label chef">👨‍🍳 CHEF'S SPECIAL</span>
+        </div>
+        <div class="menu-item">
+            <div class="item-top"><span class="item-name">EPINARD ET AU CITRON</span> <span class="price">Rs.280</span></div>
+            <p class="desc">Pasta prepared in a creamy spinach and zesty lemon sauce.</p>
+            <span class="label chef">👨‍🍳 CHEF'S SPECIAL</span>
+        </div>
+        <div class="menu-item">
+            <div class="item-top"><span class="item-name">SMOKED CREME DE MORNAY</span> <span class="price">Rs.280</span></div>
+            <p class="desc">Loaded cheesy pasta topped with delicious smoked cheese.</p>
+        </div>
+        <div class="menu-item">
+            <div class="item-top"><span class="item-name">FUSILLI LE ROUGE</span> <span class="price">Rs.260</span></div>
+            <p class="desc">Pasta prepared in classic tangy tomato sauce with exotic vegetables.</p>
+        </div>
+    </div>
+
+    <div class="section-header" id="coffee">
+        <h2>OVERLOAD DESSERT COFFEE</h2>
+    </div>
+    <div class="menu-grid">
+        <div class="menu-item">
+            <div class="item-top"><span class="item-name">SOUNDTRACK BLAST</span> <span class="price">Rs.240</span></div>
+            <p class="desc">Our signature thick dessert coffee - a hit for music lovers.</p>
+        </div>
+        <div class="menu-item">
+            <div class="item-top"><span class="item-name">COOKIE CRUNCH BLAST</span> <span class="price">Rs.240</span></div>
+            <p class="desc">Blended coffee with crunchy cookie chunks and chocolate drizzle.</p>
+        </div>
+    </div>
+
 </div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1548365328-9f547fb09537">
-<h2>🍕 Pizzas</h2>
-<div class="item"><span>Classic Margherita</span><span>₹250</span></div>
-<div class="item"><span>Veg Hawaiian</span><span>₹280</span></div>
-<div class="item"><span>Mushroom Chilly</span><span>₹280</span></div>
-<div class="item"><span>Paneer Tikka</span><span>₹320</span></div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af">
-<h2>🥪 Sandwiches & Burgers</h2>
-<div class="item"><span>Veg Cheese Sandwich</span><span>₹220</span></div>
-<div class="item"><span>Double Decker Sandwich</span><span>₹280</span></div>
-<div class="item"><span>Herb Chilly Potato Burger</span><span>₹250</span></div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1511920170033-f8396924c348">
-<h2>🍵 Tea Collection</h2>
-<div class="item"><span>Green Tea</span><span>₹140</span></div>
-<div class="item"><span>Kashmiri Kahwa</span><span>₹170</span></div>
-<div class="item"><span>Pure Matcha</span><span>₹200</span></div>
-</div>
-
-</section>
-
-<a class="whatsapp"
-href="https://wa.me/919370569122?text=Hello%20Soundtrack%20Cafe,%20I%20want%20to%20place%20an%20order"
-target="_blank">
-📲 Order on WhatsApp
-</a>
 
 <footer>
-© 2025 Soundtrack Cafe · Music • Coffee • Vibes
+    <p>Visit us at Soundtrack Cafe</p>
+    <p style="font-size: 0.7rem; opacity: 0.6; margin-top: 20px;">DESIGNED FOR THE LOVE OF MUSIC & FOOD</p>
 </footer>
 
 </body>
