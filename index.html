@@ -55,12 +55,7 @@ header p {
   padding: 12px;
   background: #1a1a1a;
   border-radius: 8px;
-  transition: transform 0.3s ease, background 0.3s ease;
-}
-
-.item:hover {
-  transform: translateX(5px);
-  background: #242424;
+  position: relative;
 }
 
 .item-title {
@@ -77,6 +72,37 @@ header p {
 
 .price {
   color: #f5c16c;
+}
+
+/* ADD BUTTON */
+.add-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: #f5c16c;
+  color: #000;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* PLACE ORDER BUTTON */
+#orderBtn {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #25D366;
+  color: white;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1000;
 }
 
 footer {
@@ -107,87 +133,72 @@ footer {
 
 <div class="container">
 
-<!-- SANDWICHES -->
 <div class="section">
 <h2>SANDWICHES</h2>
 
 <div class="item">
   <div class="item-title"><span>Veg Cheese Sandwich</span><span class="price">₹220</span></div>
-  <div class="desc">Fresh tomato, onion, cucumber & lettuce topped with cream cheese sauce. Served with green chutney, salad & chips.</div>
+  <div class="desc">Fresh tomato, onion, cucumber & lettuce topped with cream cheese sauce.</div>
+  <button class="add-btn" onclick="addItem('Veg Cheese Sandwich',220)">ADD</button>
 </div>
 
 <div class="item">
-  <div class="item-title"><span>Tikka Sandwich (Paneer / Mushroom)</span><span class="price">₹240</span></div>
-  <div class="desc">Pan grilled paneer or mushrooms tossed in in-house tandoori masala, topped with cheese. Served with salad & chips.</div>
+  <div class="item-title"><span>Tikka Sandwich</span><span class="price">₹240</span></div>
+  <div class="desc">Paneer or mushroom tossed in tandoori masala.</div>
+  <button class="add-btn" onclick="addItem('Tikka Sandwich',240)">ADD</button>
 </div>
 
-<div class="item">
-  <div class="item-title"><span>Spicy Chilly Sandwich</span><span class="price">₹240</span></div>
-  <div class="desc">Extra spicy sandwich loaded with schezwan chutney. Served with salad & chips.</div>
 </div>
 
-<div class="item">
-  <div class="item-title"><span>Double Decker Sandwich</span><span class="price">₹280</span></div>
-  <div class="desc">Double layered sandwich with veggies & paneer topped with thousand island sauce. Served with fries.</div>
-</div>
-
-<div class="item">
-  <div class="item-title"><span>Croque Madame</span><span class="price">₹300</span></div>
-  <div class="desc">Classic French open sandwich filled with cream cheese sauce & topped with egg half fry.</div>
-</div>
-</div>
-
-<!-- BREAKFAST -->
-<div class="section">
-<h2>BREAKFAST (8:00 AM – 11:30 AM)</h2>
-
-<div class="item">
-  <div class="item-title"><span>Continental Breakfast</span><span class="price">₹320</span></div>
-  <div class="desc">Bread, butter, jam, sautéed vegetables, cheese omelette, baked beans, chocolate mousse & tea/coffee/juice.</div>
-</div>
-
-<div class="item">
-  <div class="item-title"><span>Indo-American Fusion Breakfast</span><span class="price">₹320</span></div>
-  <div class="desc">Masala omelette served with salad, garlic bread, hash browns, cookies & beverage.</div>
-</div>
-
-<div class="item">
-  <div class="item-title"><span>Regular Omelettes</span><span class="price">₹180</span></div>
-  <div class="desc">Masala / scrambled / half fry eggs served with garlic bread, ketchup & chips.</div>
-</div>
-
-<div class="item">
-  <div class="item-title"><span>Premium Omelettes</span><span class="price">₹220</span></div>
-  <div class="desc">Eggs prepared in baked western or French style. Served with salad, baked beans & chips.</div>
-</div>
-</div>
-
-<!-- BEVERAGES -->
 <div class="section">
 <h2>BEVERAGES</h2>
 
-<div class="item"><div class="item-title"><span>Espresso</span><span class="price">₹100</span></div><div class="desc">Strong, rich and intense single shot of coffee.</div></div>
-<div class="item"><div class="item-title"><span>Cafe Americano</span><span class="price">₹140</span></div><div class="desc">Espresso diluted with hot water for a smooth finish.</div></div>
-<div class="item"><div class="item-title"><span>Cappuccino</span><span class="price">₹140</span></div><div class="desc">Perfect balance of espresso, steamed milk & foam.</div></div>
-<div class="item"><div class="item-title"><span>Cafe Latte</span><span class="price">₹150</span></div><div class="desc">Creamy milk-based coffee with a smooth texture.</div></div>
-
+<div class="item">
+  <div class="item-title"><span>Cappuccino</span><span class="price">₹140</span></div>
+  <div class="desc">Perfect balance of espresso, steamed milk & foam.</div>
+  <button class="add-btn" onclick="addItem('Cappuccino',140)">ADD</button>
 </div>
-
-<!-- DESSERT COFFEE -->
-<div class="section">
-<h2>DESSERT COFFEE</h2>
-
-<div class="item"><div class="item-title"><span>Cafe Mocha</span><span class="price">₹160</span></div><div class="desc">Espresso blended with chocolate & steamed milk.</div></div>
-<div class="item"><div class="item-title"><span>Caramel Macchiato</span><span class="price">₹160</span></div><div class="desc">Rich caramel flavour layered over smooth coffee.</div></div>
-<div class="item"><div class="item-title"><span>Soundtrack Blast</span><span class="price">₹240</span></div><div class="desc">Signature overloaded dessert coffee with whipped textures.</div></div>
 
 </div>
 
 </div>
+
+<button id="orderBtn" onclick="placeOrder()">Place Order</button>
 
 <footer>
 © The Soundtrack Cafe | Crafted with vibes 🎶
 </footer>
+
+<script>
+let cart = [];
+
+function addItem(name, price) {
+  cart.push({ name, price });
+  alert(name + " added to order");
+}
+
+function placeOrder() {
+  if (cart.length === 0) {
+    alert("No items selected");
+    return;
+  }
+
+  let message = "New Order:%0A";
+  let total = 0;
+
+  cart.forEach((item, i) => {
+    message += (i+1) + ". " + item.name + " - ₹" + item.price + "%0A";
+    total += item.price;
+  });
+
+  message += "%0ATotal: ₹" + total;
+
+  // 🔴 COUNTER WHATSAPP NUMBER (change this)
+  let phone = "91XXXXXXXXXX";
+
+  window.open("https://wa.me/" + phone + "?text=" + message, "_blank");
+}
+</script>
 
 </body>
 </html>
